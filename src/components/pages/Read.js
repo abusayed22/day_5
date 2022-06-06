@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { pre_delete_data, pre_get_data } from '../../redux/action/action';
 
 function Read() {
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const studentsInfo = useSelector(state => state.reducers.users);
-  console.log(studentsInfo);
+  
   useEffect(() => {
     dispatch(pre_get_data())
   },[studentsInfo]);

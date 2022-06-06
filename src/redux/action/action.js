@@ -54,8 +54,23 @@ export const pre_single_state = (id) => {
     return(dispatch) => {
         axios.get(`http://127.0.0.1:8000/api/students/${id}`)
         .then(res => {
-            dispatch(single_state())
+            dispatch(single_state(res.data.student))
         })
         .catch(err => console.log(err))
+    }
+}
+
+const single_update = () => {
+    return {
+        type:types.SINGLE_EDIT
+    }
+}
+export const pre_single_update = (id,singleState) => {
+    return(dispatch) => {
+        axios.put(`http://127.0.0.1:8000/api/students/${id},singleState`)
+        .then(res => {
+            dispatch(single_update())
+            dispatch(get_data())
+        }).catch(err => console.log(err))
     }
 }
